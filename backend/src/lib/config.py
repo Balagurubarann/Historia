@@ -4,17 +4,14 @@
 """
 
 import os
-from urllib.parse import quote_plus
+from dotenv import load_dotenv
 
-password = "kuhan@11"
-db_host = "192.168.100.59"
-db_password = quote_plus(password)
+load_dotenv()
 
-"""
-    DATABASE URI & TRACK MODIFICATIONS
-"""
-SQLALCHEMY_DATABASE_URI = (
-    f"postgresql+psycopg2://postgres:{db_password}@{db_host}:5432/historia_db"
-)
+POSTGRES_URI = os.getenv("POSTGRES_URI")
+
+#   DATABASE URI & TRACK MODIFICATIONS
+
+SQLALCHEMY_DATABASE_URI = POSTGRES_URI
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
